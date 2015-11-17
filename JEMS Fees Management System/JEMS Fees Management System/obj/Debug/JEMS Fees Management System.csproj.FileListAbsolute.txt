@@ -1,2 +1,12 @@
 F:\JEMS Fees Management System\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.exe.config
 F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.exe.config
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.exe
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.pdb
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS Fees Management System.csprojResolveAssemblyReference.cache
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.MainForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.Properties.Resources.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS Fees Management System.csproj.GenerateResource.Cache
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS Fees Management System.exe
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS Fees Management System.pdb
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.RegularAdmissionForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.ProvisionalForm.resources

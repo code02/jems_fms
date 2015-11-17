@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace JEMS_Fees_Management_System
 {
-    public partial class Form1 : Form
+    public partial class ProvisionalForm : Form
     {
-        public Form1()
+        public ProvisionalForm()
         {
             InitializeComponent();
+        }
+
+        private void PFormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainForm.pForm = null;
         }
     }
 }
