@@ -1,0 +1,2 @@
+F:\JEMS Fees Management System\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.exe.config
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Debug\JEMS Fees Management System.exe.config
