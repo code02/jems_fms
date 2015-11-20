@@ -14,6 +14,8 @@ namespace JEMS_Fees_Management_System
     {
         static public RegularAdmissionForm rAForm;
         static public ProvisionalForm pForm;
+        static public OldStudentForm oSForm;
+        static public ProvisionConfirmForm pCForm;
 
         public MainForm()
         {
@@ -42,6 +44,30 @@ namespace JEMS_Fees_Management_System
                 pForm.Show();
             }
             pForm.BringToFront();
+        }
+
+        private void oldStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (oSForm == null)
+            {
+                oSForm = new OldStudentForm();
+                oSForm.MdiParent = this;
+                oSForm.WindowState = FormWindowState.Maximized;
+                oSForm.Show();
+            }
+            oSForm.BringToFront();
+        }
+
+        private void provisionalConfirmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pCForm == null)
+            {
+                pCForm = new ProvisionConfirmForm();
+                pCForm.MdiParent = this;
+                pCForm.WindowState = FormWindowState.Maximized;
+                pCForm.Show();
+            }
+            pCForm.BringToFront();
         }
     }
 }

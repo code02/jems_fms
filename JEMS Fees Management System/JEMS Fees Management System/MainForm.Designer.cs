@@ -31,9 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.admissionTCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oldStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provisionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provisionalConfirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oldStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acceptFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,10 +49,10 @@
             this.admissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annualToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.lateFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sessionChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sessionChaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lateFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,8 +65,7 @@
             this.reportsToolStripMenuItem,
             this.studentToolStripMenuItem,
             this.baseFeeStructureToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.sessionToolStripMenuItem});
+            this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1348, 24);
@@ -93,30 +92,35 @@
             this.regularToolStripMenuItem.Text = "Regular";
             this.regularToolStripMenuItem.Click += new System.EventHandler(this.regularToolStripMenuItem_Click);
             // 
+            // oldStudentToolStripMenuItem
+            // 
+            this.oldStudentToolStripMenuItem.Name = "oldStudentToolStripMenuItem";
+            this.oldStudentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.oldStudentToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.oldStudentToolStripMenuItem.Text = "Old Student";
+            this.oldStudentToolStripMenuItem.Click += new System.EventHandler(this.oldStudentToolStripMenuItem_Click);
+            // 
             // provisionalToolStripMenuItem
             // 
             this.provisionalToolStripMenuItem.Name = "provisionalToolStripMenuItem";
-            this.provisionalToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.provisionalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.provisionalToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.provisionalToolStripMenuItem.Text = "Provisional";
             this.provisionalToolStripMenuItem.Click += new System.EventHandler(this.provisionalToolStripMenuItem_Click);
             // 
             // provisionalConfirmToolStripMenuItem
             // 
             this.provisionalConfirmToolStripMenuItem.Name = "provisionalConfirmToolStripMenuItem";
-            this.provisionalConfirmToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.provisionalConfirmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.provisionalConfirmToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.provisionalConfirmToolStripMenuItem.Text = "Provisional Confirm";
-            // 
-            // oldStudentToolStripMenuItem
-            // 
-            this.oldStudentToolStripMenuItem.Name = "oldStudentToolStripMenuItem";
-            this.oldStudentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.oldStudentToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.oldStudentToolStripMenuItem.Text = "Old Student";
+            this.provisionalConfirmToolStripMenuItem.Click += new System.EventHandler(this.provisionalConfirmToolStripMenuItem_Click);
             // 
             // tCToolStripMenuItem
             // 
             this.tCToolStripMenuItem.Name = "tCToolStripMenuItem";
-            this.tCToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.tCToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.tCToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.tCToolStripMenuItem.Text = "TC";
             // 
             // acceptFeesToolStripMenuItem
@@ -168,7 +172,7 @@
             // editDetailsToolStripMenuItem
             // 
             this.editDetailsToolStripMenuItem.Name = "editDetailsToolStripMenuItem";
-            this.editDetailsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editDetailsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.editDetailsToolStripMenuItem.Text = "Edit Details";
             // 
             // feeStructureToolStripMenuItem
@@ -177,7 +181,7 @@
             this.annualFeeStructureToolStripMenuItem,
             this.monthlyFeeStructureToolStripMenuItem});
             this.feeStructureToolStripMenuItem.Name = "feeStructureToolStripMenuItem";
-            this.feeStructureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.feeStructureToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.feeStructureToolStripMenuItem.Text = "Fee Structure";
             // 
             // annualFeeStructureToolStripMenuItem
@@ -198,54 +202,55 @@
             this.admissionToolStripMenuItem,
             this.annualToolStripMenuItem1,
             this.monthlyToolStripMenuItem1,
-            this.lateFeesToolStripMenuItem});
+            this.lateFeesToolStripMenuItem,
+            this.sessionChaneToolStripMenuItem});
             this.baseFeeStructureToolStripMenuItem.Name = "baseFeeStructureToolStripMenuItem";
-            this.baseFeeStructureToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
-            this.baseFeeStructureToolStripMenuItem.Text = "Base Fee Structure";
+            this.baseFeeStructureToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.baseFeeStructureToolStripMenuItem.Text = "Session";
             // 
             // admissionToolStripMenuItem
             // 
             this.admissionToolStripMenuItem.Name = "admissionToolStripMenuItem";
-            this.admissionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.admissionToolStripMenuItem.Text = "Admission";
+            this.admissionToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.admissionToolStripMenuItem.Text = "Base Admission Fees";
             // 
             // annualToolStripMenuItem1
             // 
             this.annualToolStripMenuItem1.Name = "annualToolStripMenuItem1";
-            this.annualToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
-            this.annualToolStripMenuItem1.Text = "Annual (Old Students)";
+            this.annualToolStripMenuItem1.Size = new System.Drawing.Size(244, 22);
+            this.annualToolStripMenuItem1.Text = "Base Annual Fees (Old Students)";
             // 
             // monthlyToolStripMenuItem1
             // 
             this.monthlyToolStripMenuItem1.Name = "monthlyToolStripMenuItem1";
-            this.monthlyToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
-            this.monthlyToolStripMenuItem1.Text = "Monthly";
-            // 
-            // lateFeesToolStripMenuItem
-            // 
-            this.lateFeesToolStripMenuItem.Name = "lateFeesToolStripMenuItem";
-            this.lateFeesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.lateFeesToolStripMenuItem.Text = "Late Fees";
+            this.monthlyToolStripMenuItem1.Size = new System.Drawing.Size(244, 22);
+            this.monthlyToolStripMenuItem1.Text = "Base Monthly Fees";
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configurationToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // sessionToolStripMenuItem
+            // sessionChaneToolStripMenuItem
             // 
-            this.sessionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sessionChangeToolStripMenuItem});
-            this.sessionToolStripMenuItem.Name = "sessionToolStripMenuItem";
-            this.sessionToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.sessionToolStripMenuItem.Text = "Session";
+            this.sessionChaneToolStripMenuItem.Name = "sessionChaneToolStripMenuItem";
+            this.sessionChaneToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.sessionChaneToolStripMenuItem.Text = "Session Change";
             // 
-            // sessionChangeToolStripMenuItem
+            // lateFeesToolStripMenuItem
             // 
-            this.sessionChangeToolStripMenuItem.Name = "sessionChangeToolStripMenuItem";
-            this.sessionChangeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.sessionChangeToolStripMenuItem.Text = "Session Change";
+            this.lateFeesToolStripMenuItem.Name = "lateFeesToolStripMenuItem";
+            this.lateFeesToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.lateFeesToolStripMenuItem.Text = "Late Fees";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // MainForm
             // 
@@ -288,10 +293,10 @@
         private System.Windows.Forms.ToolStripMenuItem admissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem annualToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem monthlyToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem lateFeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sessionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sessionChangeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lateFeesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sessionChaneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
     }
 }
 

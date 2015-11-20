@@ -27,11 +27,6 @@ namespace JEMS_Fees_Management_System
 
         }
 
-        private void RAFormClosed(object sender, FormClosedEventArgs e)
-        {
-            MainForm.rAForm = null;
-        }
-
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
@@ -45,11 +40,7 @@ namespace JEMS_Fees_Management_System
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult cancelAdmission = MessageBox.Show("Are you sure you want to cancel Admission?", "Cancel Admission", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-            if (cancelAdmission == System.Windows.Forms.DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void panel0_Paint(object sender, PaintEventArgs e)
@@ -70,12 +61,7 @@ namespace JEMS_Fees_Management_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            DialogResult cancelAdmission = MessageBox.Show("Are you sure you want to cancel Admission?", "Cancel Admission",MessageBoxButtons.YesNo,MessageBoxIcon.Asterisk);
-            if (cancelAdmission == System.Windows.Forms.DialogResult.Yes)
-            {
-                this.Close();
-            }
-
+            this.Close();
         }
 
         private void RegularAdmissionForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,6 +69,11 @@ namespace JEMS_Fees_Management_System
             DialogResult cancelAdmission = MessageBox.Show("Are you sure you want to cancel Admission?", "Cancel Admission", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (cancelAdmission == System.Windows.Forms.DialogResult.No) e.Cancel = true;
             else e.Cancel = false;
+        }
+
+        private void RegularAdmissionFormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainForm.rAForm = null;
         }
 
 

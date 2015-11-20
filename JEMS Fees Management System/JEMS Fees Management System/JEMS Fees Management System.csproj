@@ -52,11 +52,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvisionConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvisionConfirmForm.Designer.cs">
+      <DependentUpon>ProvisionConfirmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProvisionalForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProvisionalForm.Designer.cs">
       <DependentUpon>ProvisionalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OldStudentForm.Designer.cs">
+      <DependentUpon>OldStudentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegularAdmissionForm.cs">
       <SubType>Form</SubType>
@@ -76,8 +88,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ProvisionConfirmForm.resx">
+      <DependentUpon>ProvisionConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProvisionalForm.resx">
       <DependentUpon>ProvisionalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldStudentForm.resx">
+      <DependentUpon>OldStudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegularAdmissionForm.resx">
       <DependentUpon>RegularAdmissionForm.cs</DependentUpon>
