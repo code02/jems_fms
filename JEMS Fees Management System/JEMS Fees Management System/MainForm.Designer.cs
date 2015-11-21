@@ -49,9 +49,10 @@
             this.admissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annualToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sessionChaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lateFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sessionChaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sessionConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +89,7 @@
             // 
             this.regularToolStripMenuItem.Name = "regularToolStripMenuItem";
             this.regularToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.regularToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.regularToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.regularToolStripMenuItem.Text = "Regular";
             this.regularToolStripMenuItem.Click += new System.EventHandler(this.regularToolStripMenuItem_Click);
             // 
@@ -203,7 +204,8 @@
             this.annualToolStripMenuItem1,
             this.monthlyToolStripMenuItem1,
             this.lateFeesToolStripMenuItem,
-            this.sessionChaneToolStripMenuItem});
+            this.sessionChaneToolStripMenuItem,
+            this.sessionConfigurationToolStripMenuItem});
             this.baseFeeStructureToolStripMenuItem.Name = "baseFeeStructureToolStripMenuItem";
             this.baseFeeStructureToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.baseFeeStructureToolStripMenuItem.Text = "Session";
@@ -226,6 +228,24 @@
             this.monthlyToolStripMenuItem1.Size = new System.Drawing.Size(244, 22);
             this.monthlyToolStripMenuItem1.Text = "Base Monthly Fees";
             // 
+            // lateFeesToolStripMenuItem
+            // 
+            this.lateFeesToolStripMenuItem.Name = "lateFeesToolStripMenuItem";
+            this.lateFeesToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.lateFeesToolStripMenuItem.Text = "Late Fees";
+            // 
+            // sessionChaneToolStripMenuItem
+            // 
+            this.sessionChaneToolStripMenuItem.Name = "sessionChaneToolStripMenuItem";
+            this.sessionChaneToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.sessionChaneToolStripMenuItem.Text = "Session Change";
+            // 
+            // sessionConfigurationToolStripMenuItem
+            // 
+            this.sessionConfigurationToolStripMenuItem.Name = "sessionConfigurationToolStripMenuItem";
+            this.sessionConfigurationToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.sessionConfigurationToolStripMenuItem.Text = "Session Configuration";
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -234,22 +254,10 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // sessionChaneToolStripMenuItem
-            // 
-            this.sessionChaneToolStripMenuItem.Name = "sessionChaneToolStripMenuItem";
-            this.sessionChaneToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.sessionChaneToolStripMenuItem.Text = "Session Change";
-            // 
-            // lateFeesToolStripMenuItem
-            // 
-            this.lateFeesToolStripMenuItem.Name = "lateFeesToolStripMenuItem";
-            this.lateFeesToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.lateFeesToolStripMenuItem.Text = "Late Fees";
-            // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // MainForm
@@ -263,6 +271,7 @@
             this.Name = "MainForm";
             this.Text = "JEMS Fees Management System v1.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.mainFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -297,6 +306,9 @@
         private System.Windows.Forms.ToolStripMenuItem lateFeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sessionChaneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sessionConfigurationToolStripMenuItem;
+
+
     }
 }
 

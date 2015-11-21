@@ -76,6 +76,12 @@
     <Compile Include="RegularAdmissionForm.Designer.cs">
       <DependentUpon>RegularAdmissionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetUp.Designer.cs">
+      <DependentUpon>SetUp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegularAdmissionForm.resx">
       <DependentUpon>RegularAdmissionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetUp.resx">
+      <DependentUpon>SetUp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -20,6 +20,8 @@ namespace JEMS_Fees_Management_System
         public MainForm()
         {
             InitializeComponent();
+
+
         }
 
         private void regularToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +70,22 @@ namespace JEMS_Fees_Management_System
                 pCForm.Show();
             }
             pCForm.BringToFront();
+        }
+
+        private void mainFormLoad(object sender, EventArgs e)
+        {
+
+            // Check database Connectivity and database integrity
+            //if()
+            {
+                using (SetUp setUp = new SetUp())
+                {
+                    setUp.Owner = this;
+                    setUp.ShowDialog();
+                    if (!setUp.AllSet) this.Close();
+
+                }
+            }
         }
     }
 }
