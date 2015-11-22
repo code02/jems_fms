@@ -140,6 +140,7 @@
             this.monthlyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
             this.monthlyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.monthlyToolStripMenuItem.Text = "Monthly";
+            this.monthlyToolStripMenuItem.Click += new System.EventHandler(this.monthlyToolStripMenuItem_Click);
             // 
             // annualToolStripMenuItem
             // 

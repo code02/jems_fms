@@ -77,6 +77,7 @@ namespace JEMS_Fees_Management_System
 
             // Check database Connectivity and database integrity
             //if()
+            /*
             {
                 using (SetUp setUp = new SetUp())
                 {
@@ -85,7 +86,12 @@ namespace JEMS_Fees_Management_System
                     if (!setUp.AllSet) this.Close();
 
                 }
-            }
+            }*/
+        }
+
+        private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

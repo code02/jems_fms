@@ -49,14 +49,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.sessionPanel = new System.Windows.Forms.Panel();
             this.sessionPrevious = new System.Windows.Forms.Button();
-            this.sessionNext = new System.Windows.Forms.Button();
-            this.endSessionLabel = new System.Windows.Forms.Label();
+            this.sessionDone = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.sessionTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.t_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             this.dbConnectPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.db_timeout)).BeginInit();
             this.sessionPanel.SuspendLayout();
@@ -266,12 +263,9 @@
             // sessionPanel
             // 
             this.sessionPanel.Controls.Add(this.sessionPrevious);
-            this.sessionPanel.Controls.Add(this.sessionNext);
-            this.sessionPanel.Controls.Add(this.endSessionLabel);
+            this.sessionPanel.Controls.Add(this.sessionDone);
             this.sessionPanel.Controls.Add(this.dataGridView1);
             this.sessionPanel.Controls.Add(this.label2);
-            this.sessionPanel.Controls.Add(this.sessionTextBox);
-            this.sessionPanel.Controls.Add(this.label1);
             this.sessionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sessionPanel.Location = new System.Drawing.Point(0, 0);
             this.sessionPanel.Name = "sessionPanel";
@@ -288,25 +282,16 @@
             this.sessionPrevious.UseVisualStyleBackColor = true;
             this.sessionPrevious.Click += new System.EventHandler(this.sessionPrevious_Click);
             // 
-            // sessionNext
+            // sessionDone
             // 
-            this.sessionNext.BackColor = System.Drawing.SystemColors.Highlight;
-            this.sessionNext.Location = new System.Drawing.Point(197, 221);
-            this.sessionNext.Name = "sessionNext";
-            this.sessionNext.Size = new System.Drawing.Size(75, 23);
-            this.sessionNext.TabIndex = 10;
-            this.sessionNext.Text = "Next";
-            this.sessionNext.UseVisualStyleBackColor = false;
-            this.sessionNext.Click += new System.EventHandler(this.sessionNext_Click);
-            // 
-            // endSessionLabel
-            // 
-            this.endSessionLabel.AutoSize = true;
-            this.endSessionLabel.Location = new System.Drawing.Point(103, 15);
-            this.endSessionLabel.Name = "endSessionLabel";
-            this.endSessionLabel.Size = new System.Drawing.Size(36, 13);
-            this.endSessionLabel.TabIndex = 5;
-            this.endSessionLabel.Text = "-20XX";
+            this.sessionDone.BackColor = System.Drawing.SystemColors.Highlight;
+            this.sessionDone.Location = new System.Drawing.Point(197, 221);
+            this.sessionDone.Name = "sessionDone";
+            this.sessionDone.Size = new System.Drawing.Size(75, 23);
+            this.sessionDone.TabIndex = 10;
+            this.sessionDone.Text = "Done";
+            this.sessionDone.UseVisualStyleBackColor = false;
+            this.sessionDone.Click += new System.EventHandler(this.sessionNext_Click);
             // 
             // dataGridView1
             // 
@@ -318,7 +303,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.t_id,
             this.t_name});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 65);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 53);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 25;
@@ -326,32 +311,6 @@
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.TerminalCellModified);
             this.dataGridView1.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.TerminalCellModification);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Terminals";
-            // 
-            // sessionTextBox
-            // 
-            this.sessionTextBox.Location = new System.Drawing.Point(62, 12);
-            this.sessionTextBox.Name = "sessionTextBox";
-            this.sessionTextBox.Size = new System.Drawing.Size(35, 20);
-            this.sessionTextBox.TabIndex = 8;
-            this.sessionTextBox.TextChanged += new System.EventHandler(this.session_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Session";
             // 
             // t_id
             // 
@@ -370,13 +329,23 @@
             this.t_name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.t_name.Width = 110;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Terminals";
+            // 
             // SetUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.sessionPanel);
             this.Controls.Add(this.dbConnectPanel);
+            this.Controls.Add(this.sessionPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -415,12 +384,9 @@
         private System.Windows.Forms.TextBox db_server;
         private System.Windows.Forms.Panel sessionPanel;
         private System.Windows.Forms.Button sessionPrevious;
-        private System.Windows.Forms.Button sessionNext;
-        private System.Windows.Forms.Label endSessionLabel;
+        private System.Windows.Forms.Button sessionDone;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox sessionTextBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn t_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn t_name;
 

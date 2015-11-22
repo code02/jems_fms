@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Resources;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace JEMS_Fees_Management_System
 {
     public partial class SetUp : Form
     {
-        Boolean[] session_complete = new Boolean[2]{false,false};
+        Boolean session_complete = false;                           //All session Fields Complete
         String[] terminals = new String[10] {"","","","","",
                                              "","","","",""};
         
-
 
         String connectionString;
 
@@ -155,13 +156,10 @@ namespace JEMS_Fees_Management_System
 
     //Database Connection End
 
+
     // Session Panel
 
-        private void RowDeleted(object sender, DataGridViewRowEventArgs e)
-        {
-            DataModified();
-        }
-
+        
         private void DataModified()
         {
             //if (sessionPanel.Visible == false) return;
@@ -175,7 +173,7 @@ namespace JEMS_Fees_Management_System
             }
             if(empty)
             {   
-                session_complete[1] = false;
+                session_complete = false;
                 ButtonReset();
                 return;
             }
@@ -188,7 +186,7 @@ namespace JEMS_Fees_Management_System
                     String text = dataGridView1[1, i].Value.ToString();
                     if (terminals.Contains(text))
                     {
-                        session_complete[1] = false;
+                        session_complete = false;
                         ButtonReset();
                         return;
                     }
@@ -198,43 +196,19 @@ namespace JEMS_Fees_Management_System
                     }
                 }
             }
-            session_complete[1] = true;
+            session_complete = true;
             ButtonReset();
         }
                 
-        private void session_TextChanged(object sender, EventArgs e)
-        {
-            if (sessionTextBox.Text!=null && isNumeric(sessionTextBox.Text,4))
-            { 
-                int val = Int32.Parse(sessionTextBox.Text);
-                if(val > 2014 && val <= 2050)
-                {
-                    session_complete[0] = true;
-                    ButtonReset();
-                    endSessionLabel.Text = "-" + (val + 1);
-                    return;
-                }
-            }
-            endSessionLabel.Text = "-20XX";
-            session_complete[0] = false;
-            ButtonReset();
-                    
-
-        }
-
         void ButtonReset()
         {
-            if (session_complete[0] && session_complete[1])
+            if (session_complete)
             {
-                sessionNext.Enabled = true;
-                
+                sessionDone.Enabled = true;
             }
             else
             {
-                sessionNext.Enabled = false;
-                //if (!session_complete[0] && !session_complete[1]) info.Text = "both not true";
-                //else if (!session_complete[0]) info.Text = "0 not true";
-                //else info.Text = "1 not true";
+                sessionDone.Enabled = false;
             }
         }
 
@@ -258,38 +232,36 @@ namespace JEMS_Fees_Management_System
 
         private void sessionNext_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            
+            //Save to configuration File and Database terminal table
+            using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                try
+                try 
                 {
                     connection.Open();
-                    SqlDataReader reader = null;
-                    SqlCommand command = new SqlCommand("select * from config where session = " + sessionTextBox, connection);
-                    reader = command.ExecuteReader();
-                    bool table_status = false;
-                    while (reader.Read())
+                    SqlCommand dumpTable = new SqlCommand("truncate table terminal_names", connection);
+                    dumpTable.ExecuteNonQuery();
+                    for(int i=0;i<=9;i++)
                     {
-                        table_status = true; ;
-                    }
-                    if (table_status == false)
-                    {
-                        // Start Fees Filling Form
-
+                        if (terminals[i] != null && terminals[i].Length != 0)
+                        {
+                            SqlCommand addTerminal = new SqlCommand("insert into terminal_names (id,name)" +
+                                                   " values(" + (i + 1) + "," + "\"" + terminals[i] + "\")", connection);
+                            addTerminal.ExecuteNonQuery();
+                        }
                     }
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
                 finally
                 {
                     connection.Close();
-
-            //Save to configuration File and Database config table
-
-
                 }
             }
+
+
 
         }
 
