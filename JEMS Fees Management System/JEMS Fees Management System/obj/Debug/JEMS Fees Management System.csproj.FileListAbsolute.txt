@@ -12,3 +12,5 @@ F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Ma
 F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.ProvisionalForm.resources
 F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.OldStudentForm.resources
 F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.ProvisionConfirmForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.SetUp.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Debug\JEMS_Fees_Management_System.Strings.resources
