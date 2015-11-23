@@ -38,10 +38,12 @@ namespace JEMS_Fees_Management_System
             dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.TerminalCellModified);
 
             setDatabaseFields();
+            setTerminalFields();
         }
         
         void setDatabaseFields()
         {
+            connectionString = GlobalVariables.dbConnectString;
             string configPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.ini";
             try                                                             // Reading config file for connection string
             {
@@ -114,10 +116,13 @@ namespace JEMS_Fees_Management_System
                 db_timeout.Value = 5;
             }
 
+        }
 
+        void setTerminalFields()
+        {
             String query = "select * from terminal_names;";
             SqlDataReader dr;
-            using (SqlConnection myConnection = new SqlConnection(GlobalVariables.dbConnectString))
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -125,7 +130,7 @@ namespace JEMS_Fees_Management_System
                     using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                     {
                         dr = myCommand.ExecuteReader();
-                        while(dr.Read())
+                        while (dr.Read())
                         {
 
                             terminals[Convert.ToInt32(dr["id"]) - 1] = dr["name"].ToString();
@@ -137,15 +142,16 @@ namespace JEMS_Fees_Management_System
                 }
                 catch
                 {
-
+                    for(int i=0;i<=9;i++)
+                    {
+                        dataGridView1[1, i].Value = "";
+                    }
                 }
                 finally
                 {
                     myConnection.Close();
                 }
             }
-
-
 
 
         }
@@ -271,6 +277,7 @@ namespace JEMS_Fees_Management_System
         {
             dbConnectPanel.Visible = false;
             terminalPanel.Visible = true;
+            setTerminalFields();
         }
 
 
