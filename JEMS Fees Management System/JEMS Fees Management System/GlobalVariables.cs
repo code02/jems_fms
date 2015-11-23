@@ -9,10 +9,5 @@ namespace JEMS_Fees_Management_System
     public static class GlobalVariables
     {
         public static String dbConnectString;
-
-        public static void readDBConnectString()
-        {
-            dbConnectString = null;
-        }
     }
 }

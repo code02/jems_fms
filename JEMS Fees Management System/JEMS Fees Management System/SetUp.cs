@@ -32,8 +32,124 @@ namespace JEMS_Fees_Management_System
             dbconnect_next.Enabled = false;
             terminalPanel.Visible = false;
             dbConnectPanel.Visible = true;
+
+            for (int i = 1; i <= 10; i++)
+                dataGridView1.Rows.Add("" + i, "");
+            dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.TerminalCellModified);
+
+            setDatabaseFields();
         }
         
+        void setDatabaseFields()
+        {
+            string configPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.ini";
+            try                                                             // Reading config file for connection string
+            {
+                if (File.Exists(configPath))
+                using (StreamReader sr = File.OpenText(configPath))
+                {
+                    String readString;
+                    if ((readString = sr.ReadLine()) != null)
+                    {
+                        int i = -1, j = -1;
+                        int count = 0;
+                        foreach (char c in readString)
+                        {
+                            if (c == '"' || c == '\'')
+                            {
+                                if (i == -1) i = count;
+                                else
+                                {
+                                    j = count;
+                                    break;
+                                }
+                            }
+                            count++;
+                        }
+                        if (i < j - 1 && i >= 0)
+                        {
+                            readString = readString.Substring(i + 1, j - i - 1);
+                            GlobalVariables.dbConnectString = readString;
+                            int k = 0, field = 0;
+                            //Boolean rd = false;
+                            count=0;
+                            try
+                            {
+                                foreach (char c in readString)
+                                {
+                                    if (c == '=') k = count + 1;
+                                    if (c == ';')
+                                    {
+                                        String sub = readString.Substring(k, count - k );
+                                        if (field == 0) db_id.Text = sub;
+                                        if (field == 1) db_password.Text = sub;
+                                        if (field == 2) db_server.Text = sub;
+                                        if (field == 4) db_name.Text = sub;
+                                        if (field == 5) db_timeout.Value = Int32.Parse(sub);
+                                        field++;
+                                    }
+                                    count++;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                db_id.Text = "";
+                                db_password.Text = "";
+                                db_server.Text = "";
+                                db_name.Text = "";
+                                db_timeout.Value = 5;
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db_id.Text = "";
+                db_password.Text = "";
+                db_server.Text = "";
+                db_name.Text = "";
+                db_timeout.Value = 5;
+            }
+
+
+            String query = "select * from terminal_names;";
+            SqlDataReader dr;
+            using (SqlConnection myConnection = new SqlConnection(GlobalVariables.dbConnectString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                    {
+                        dr = myCommand.ExecuteReader();
+                        while(dr.Read())
+                        {
+
+                            terminals[Convert.ToInt32(dr["id"]) - 1] = dr["name"].ToString();
+                            dataGridView1[1, Convert.ToInt32(dr["id"]) - 1].Value = dr["name"].ToString();
+                        }
+
+                        dr.Close();
+                    }
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    myConnection.Close();
+                }
+            }
+
+
+
+
+        }
+
         Boolean isNumeric(String str,int size)
         {
             if (str == null || str.Length == 0) return false;
@@ -151,12 +267,17 @@ namespace JEMS_Fees_Management_System
             dbconnect_next.Enabled = false;
         }
 
+        private void dbconnect_next_Click(object sender, EventArgs e)
+        {
+            dbConnectPanel.Visible = false;
+            terminalPanel.Visible = true;
+        }
 
 
     //Database Connection End
 
 
-    // Session Panel
+    // Terminal Panel
 
         
         private void DataModified()
@@ -209,12 +330,6 @@ namespace JEMS_Fees_Management_System
             {
                 terminalDone.Enabled = false;
             }
-        }
-
-        private void dbconnect_next_Click(object sender, EventArgs e)
-        {
-            dbConnectPanel.Visible = false;
-            terminalPanel.Visible = true;
         }
 
         private void terminalPrevious_Click(object sender, EventArgs e)
@@ -282,7 +397,11 @@ namespace JEMS_Fees_Management_System
                     connection.Close();
                 }
             }
-            if (dualCheck == 2) AllSet = true;
+            if (dualCheck == 2) 
+            { 
+                AllSet = true;
+                GlobalVariables.dbConnectString = connectionString;
+            }
 
             this.Close();
         }
