@@ -89,7 +89,7 @@ namespace JEMS_Fees_Management_System
         private void mainFormLoad(object sender, EventArgs e)
         {
 
-            // Check database Connectivity and database integrity
+            // Check database Connectivity (config file)
 
             string configPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.ini";
             try                                                             // Reading config file for connection string
@@ -150,6 +150,8 @@ namespace JEMS_Fees_Management_System
                 else
                     this.Close();
             }
+
+            // Check for terminal name entry in database
 
             if(!checkConnectivity())
             {
@@ -227,6 +229,11 @@ namespace JEMS_Fees_Management_System
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            launchSetup();
         }
     }
 }

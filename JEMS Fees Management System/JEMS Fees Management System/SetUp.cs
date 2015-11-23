@@ -18,7 +18,7 @@ namespace JEMS_Fees_Management_System
 {
     public partial class SetUp : Form
     {
-        Boolean session_complete = false;                           //All session Fields Complete
+        Boolean terminal_complete = false;                           //All session Fields Complete
         String[] terminals = new String[10] {"","","","","",
                                              "","","","",""};
 
@@ -28,7 +28,7 @@ namespace JEMS_Fees_Management_System
         public SetUp()
         {
             InitializeComponent();
-            ButtonReset();
+            terminalDone.Enabled = terminal_complete;
             dbconnect_next.Enabled = false;
             terminalPanel.Visible = false;
             dbConnectPanel.Visible = true;
@@ -289,7 +289,7 @@ namespace JEMS_Fees_Management_System
         
         private void DataModified()
         {
-            //if (sessionPanel.Visible == false) return;
+            if (dataGridView1.Rows.Count!=10) return;
             bool empty = true;
             for(int i=0;i<=9;i++)
             {
@@ -300,8 +300,8 @@ namespace JEMS_Fees_Management_System
             }
             if(empty)
             {   
-                session_complete = false;
-                ButtonReset();
+                terminal_complete = false;
+                terminalDone.Enabled = terminal_complete;
                 return;
             }
             terminals = new String[10] {"","","","","",
@@ -313,8 +313,8 @@ namespace JEMS_Fees_Management_System
                     String text = dataGridView1[1, i].Value.ToString();
                     if (terminals.Contains(text))
                     {
-                        session_complete = false;
-                        ButtonReset();
+                        terminal_complete = false;
+                        terminalDone.Enabled = terminal_complete;
                         return;
                     }
                     else
@@ -323,22 +323,10 @@ namespace JEMS_Fees_Management_System
                     }
                 }
             }
-            session_complete = true;
-            ButtonReset();
+            terminal_complete = true;
+            terminalDone.Enabled = terminal_complete;
         }
                 
-        void ButtonReset()
-        {
-            if (session_complete)
-            {
-                terminalDone.Enabled = true;
-            }
-            else
-            {
-                terminalDone.Enabled = false;
-            }
-        }
-
         private void terminalPrevious_Click(object sender, EventArgs e)
         {
             dbConnectPanel.Visible = true;
