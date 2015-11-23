@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +27,8 @@ namespace JEMS_Fees_Management_System
         }
 
         private void regularToolStripMenuItem_Click(object sender, EventArgs e)
-        {   
+        {
+
             if(rAForm == null)
             { 
                 rAForm = new RegularAdmissionForm();
@@ -77,7 +80,7 @@ namespace JEMS_Fees_Management_System
 
             // Check database Connectivity and database integrity
             //if()
-            /*
+            
             {
                 using (SetUp setUp = new SetUp())
                 {
@@ -86,7 +89,7 @@ namespace JEMS_Fees_Management_System
                     if (!setUp.AllSet) this.Close();
 
                 }
-            }*/
+            }
         }
 
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)

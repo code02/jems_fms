@@ -1,0 +1,14 @@
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Release\JEMS Fees Management System.exe.config
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Release\JEMS Fees Management System.exe
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\bin\Release\JEMS Fees Management System.pdb
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.MainForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.Properties.Resources.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.ProvisionConfirmForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.ProvisionalForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.OldStudentForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.RegularAdmissionForm.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.SetUp.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS_Fees_Management_System.Strings.resources
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS Fees Management System.csproj.GenerateResource.Cache
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS Fees Management System.exe
+F:\JEMS Fees Management System\jems_fms\JEMS Fees Management System\JEMS Fees Management System\obj\Release\JEMS Fees Management System.pdb

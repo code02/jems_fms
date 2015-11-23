@@ -309,8 +309,11 @@
             this.dataGridView1.RowHeadersWidth = 25;
             this.dataGridView1.Size = new System.Drawing.Size(200, 150);
             this.dataGridView1.TabIndex = 9;
+            for (int i = 1; i <= 10; i++)
+                dataGridView1.Rows.Add("" + i, "");
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.TerminalCellModified);
             this.dataGridView1.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.TerminalCellModification);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.TerminalCellModified);
             // 
             // t_id
             // 

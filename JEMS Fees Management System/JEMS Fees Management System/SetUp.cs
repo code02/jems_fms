@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using System.Resources;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.IO;
+using System.Reflection;
 
 namespace JEMS_Fees_Management_System
 {
@@ -19,20 +21,17 @@ namespace JEMS_Fees_Management_System
         Boolean session_complete = false;                           //All session Fields Complete
         String[] terminals = new String[10] {"","","","","",
                                              "","","","",""};
-        
 
-        String connectionString;
+
+        String connectionString; 
 
         public SetUp()
         {
             InitializeComponent();
             ButtonReset();
             dbconnect_next.Enabled = false;
-            terminalPanel.Visible = true; ;
-            dbConnectPanel.Visible = false;
-            for (int i = 1; i <= 10; i++ )
-                dataGridView1.Rows.Add("" + i, "");
-            
+            terminalPanel.Visible = false;
+            dbConnectPanel.Visible = true;
         }
         
         Boolean isNumeric(String str,int size)
@@ -234,6 +233,27 @@ namespace JEMS_Fees_Management_System
         {
             
             //Save to configuration File and Database terminal table
+            int dualCheck = 0;
+            string configPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.ini";
+            try
+            {
+                if(File.Exists(configPath))
+                {
+                    File.Delete(configPath);
+                }
+                using(FileStream fs = File.Create(configPath))
+                {
+                    Byte[] data = new UTF8Encoding(true).GetBytes("dbconnect String = \"" + connectionString + "\"");
+                    fs.Write(data, 0, data.Length);
+                    dualCheck++;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
                 try 
@@ -245,11 +265,13 @@ namespace JEMS_Fees_Management_System
                     {
                         if (terminals[i] != null && terminals[i].Length != 0)
                         {
-                            SqlCommand addTerminal = new SqlCommand("insert into terminal_names (id,name)" +
-                                                   " values(" + (i + 1) + "," + "\"" + terminals[i] + "\")", connection);
+                            String addString = "insert into terminal_names (id,name)" +
+                                                   " values(" + (i + 1) + "," + "'" + terminals[i] + "')";
+                            SqlCommand addTerminal = new SqlCommand(addString, connection);
                             addTerminal.ExecuteNonQuery();
                         }
                     }
+                    dualCheck++;
                 }
                 catch(Exception ex)
                 {
@@ -260,9 +282,9 @@ namespace JEMS_Fees_Management_System
                     connection.Close();
                 }
             }
+            if (dualCheck == 2) AllSet = true;
 
-
-
+            this.Close();
         }
 
         private void TerminalCellModified(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)

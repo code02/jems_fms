@@ -13,10 +13,10 @@ namespace JEMS_Fees_Management_System
         /// </summary>
 
         static public String connectionString = "user id=sa;" +
-                           "password=8349066713;server=DESKTOP-JHNU9A9\\SQLEXPRESS;" +
+                           "password=8349066713;server=DESKTOP-JHNU9A9\\SQLEXPRESS;" + //   DESKTOP-JHNU9A9\SQLEXPRESS
                            "Trusted_Connection=no;" +
-                           "database=temp_database_1; " +
-                           "connection timeout=5";
+                           "database=jems_database_1; " +
+                           "connection timeout=5"; 
         
         [STAThread]
         static void Main()
