@@ -28,7 +28,7 @@ namespace JEMS_Fees_Management_System
             InitializeComponent();
             ButtonReset();
             dbconnect_next.Enabled = false;
-            sessionPanel.Visible = true; ;
+            terminalPanel.Visible = true; ;
             dbConnectPanel.Visible = false;
             for (int i = 1; i <= 10; i++ )
                 dataGridView1.Rows.Add("" + i, "");
@@ -204,24 +204,24 @@ namespace JEMS_Fees_Management_System
         {
             if (session_complete)
             {
-                sessionDone.Enabled = true;
+                terminalDone.Enabled = true;
             }
             else
             {
-                sessionDone.Enabled = false;
+                terminalDone.Enabled = false;
             }
         }
 
         private void dbconnect_next_Click(object sender, EventArgs e)
         {
             dbConnectPanel.Visible = false;
-            sessionPanel.Visible = true;
+            terminalPanel.Visible = true;
         }
 
-        private void sessionPrevious_Click(object sender, EventArgs e)
+        private void terminalPrevious_Click(object sender, EventArgs e)
         {
             dbConnectPanel.Visible = true;
-            sessionPanel.Visible = false;
+            terminalPanel.Visible = false;
 
         }
 
@@ -230,7 +230,7 @@ namespace JEMS_Fees_Management_System
             DataModified();
         }
 
-        private void sessionNext_Click(object sender, EventArgs e)
+        private void terminalDone_Click(object sender, EventArgs e)
         {
             
             //Save to configuration File and Database terminal table
