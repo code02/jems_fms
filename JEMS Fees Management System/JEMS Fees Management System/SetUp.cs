@@ -156,17 +156,7 @@ namespace JEMS_Fees_Management_System
 
         }
 
-        Boolean isNumeric(String str,int size)
-        {
-            if (str == null || str.Length == 0) return false;
-            if (size != 0 && str.Length != size) return false;
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-            return true;
-        }
+        
 
     //Database Connection 
 
