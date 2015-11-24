@@ -52,7 +52,7 @@ namespace JEMS_Fees_Management_System
                     DialogResult dr = MessageBox.Show("Database configuration problem encountered. Press OK to setup database configuration. (Contact Admininstrator)"
                                 , "Database Connection not Configured", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (dr == System.Windows.Forms.DialogResult.OK)
-                        launchSetup();
+                        launchSetup(true);
                     else
                         this.Close();
                 }
@@ -86,7 +86,7 @@ namespace JEMS_Fees_Management_System
                             DialogResult dr = MessageBox.Show("Database configuration problem encountered. Press OK to setup database configuration. (Contact Admininstrator)"
                                 , "Database Configuration Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                             if (dr == System.Windows.Forms.DialogResult.OK)
-                                launchSetup();
+                                launchSetup(true);
                             else
                                 this.Close();
 
@@ -100,7 +100,7 @@ namespace JEMS_Fees_Management_System
                 DialogResult dr = MessageBox.Show("Database configuration problem encountered. Press OK to setup database configuration. (Contact Admininstrator)"
                                 , "Database Configuration Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 if (dr == System.Windows.Forms.DialogResult.OK)
-                    launchSetup();
+                    launchSetup(true);
                 else
                     this.Close();
             }
@@ -114,13 +114,13 @@ namespace JEMS_Fees_Management_System
                 DialogResult dr = MessageBox.Show("Unable to connect to database. Check if database server is ON. Do you want to re-do Setup? Press 'No' to exit."
                                 , "Could not connect to Database", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (dr == System.Windows.Forms.DialogResult.Yes)
-                    launchSetup();
+                    launchSetup(true);
                 else
                     this.Close();
             }
             else
             {
-                String query = "select count(*) from terminal_names;";
+                String query = "select count(*) from " + Table.terminal_names.tableName + ";";
                 int count = 0;
                 using (SqlConnection myConnection = new SqlConnection(GlobalVariables.dbConnectString))
                 {
@@ -146,7 +146,7 @@ namespace JEMS_Fees_Management_System
                     DialogResult dr = MessageBox.Show("Setup Fees Terminals. (Contact Admininstrator)"
                                 , "Fees Terminals Empty", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     if (dr == System.Windows.Forms.DialogResult.OK)
-                        launchSetup();
+                        launchSetup(true);
                     else
                         this.Close();
                 }
@@ -220,6 +220,24 @@ namespace JEMS_Fees_Management_System
 
         }
 
+        void launchSetup(bool killParent)
+        {
+            using (SetUp setUp = new SetUp())
+            {
+                setUp.ShowDialog();
+                if (!setUp.AllSet && killParent) Close();
+            }
+        }
+
+        void launchBaseFeesForm(bool killParent)
+        {
+            using (BaseFeesStructureForm bFSForm = new BaseFeesStructureForm())
+            {
+                bFSForm.ShowDialog();
+                if (!bFSForm.complete && killParent)
+                    Close();
+            }
+        }
 
         private void regularToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -270,25 +288,24 @@ namespace JEMS_Fees_Management_System
             pCForm.BringToFront();
         }
 
-        void launchSetup()
-        {
-            using (SetUp setUp = new SetUp())
-            {
-                setUp.Owner = this;
-                setUp.ShowDialog();
-                if (!setUp.AllSet) this.Close();
-            }
-        }
-
-
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            launchSetup();
+
+        }
+
+        private void admissionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            launchBaseFeesForm(false);
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            launchSetup(false);
         }
     }
 }

@@ -55,6 +55,9 @@
             this.dupDiary_invalid = new System.Windows.Forms.Label();
             this.dupRC_invalid = new System.Windows.Forms.Label();
             this.dupTC_invalid = new System.Windows.Forms.Label();
+            this.caution = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.caution_invalid = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.warnDate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -245,7 +248,7 @@
             // sessionDone
             // 
             this.sessionDone.BackColor = System.Drawing.SystemColors.Highlight;
-            this.sessionDone.Location = new System.Drawing.Point(136, 257);
+            this.sessionDone.Location = new System.Drawing.Point(136, 284);
             this.sessionDone.Name = "sessionDone";
             this.sessionDone.Size = new System.Drawing.Size(75, 23);
             this.sessionDone.TabIndex = 10;
@@ -330,11 +333,43 @@
             this.dupTC_invalid.Text = "Invalid";
             this.dupTC_invalid.Visible = false;
             // 
+            // caution
+            // 
+            this.caution.Location = new System.Drawing.Point(130, 248);
+            this.caution.MaxLength = 4;
+            this.caution.Name = "caution";
+            this.caution.Size = new System.Drawing.Size(35, 20);
+            this.caution.TabIndex = 28;
+            this.caution.TextChanged += new System.EventHandler(this.caution_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 251);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 13);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Caution Money";
+            // 
+            // caution_invalid
+            // 
+            this.caution_invalid.AutoSize = true;
+            this.caution_invalid.ForeColor = System.Drawing.Color.Red;
+            this.caution_invalid.Location = new System.Drawing.Point(171, 251);
+            this.caution_invalid.Name = "caution_invalid";
+            this.caution_invalid.Size = new System.Drawing.Size(38, 13);
+            this.caution_invalid.TabIndex = 30;
+            this.caution_invalid.Text = "Invalid";
+            this.caution_invalid.Visible = false;
+            // 
             // SessionConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 297);
+            this.ClientSize = new System.Drawing.Size(223, 322);
+            this.Controls.Add(this.caution_invalid);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.caution);
             this.Controls.Add(this.dupTC_invalid);
             this.Controls.Add(this.dupRC_invalid);
             this.Controls.Add(this.dupDiary_invalid);
@@ -403,5 +438,8 @@
         private System.Windows.Forms.Label dupDiary_invalid;
         private System.Windows.Forms.Label dupRC_invalid;
         private System.Windows.Forms.Label dupTC_invalid;
+        private System.Windows.Forms.TextBox caution;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label caution_invalid;
     }
 }

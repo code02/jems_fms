@@ -17,7 +17,7 @@ namespace JEMS_Fees_Management_System
         public bool killParent = false;
         public bool forceClose = false;
         public bool done = false;
-        bool[] complete = {false,false,false,false,false,false,false,false};
+        bool[] complete = new bool[9]{false,false,false,false,false,false,false,false,false};
 
         public SessionConfig()
         {
@@ -55,7 +55,7 @@ namespace JEMS_Fees_Management_System
         void ButtonReset()
         { 
             bool check = true;
-            for (int i = 0; i < 8; i++) 
+            for (int i = 0; i < 9; i++) 
             {
                 check = check && complete[i];
                 //if (!complete[i]) check = false;
@@ -210,6 +210,22 @@ namespace JEMS_Fees_Management_System
             ButtonReset();
         }
 
+        private void caution_TextChanged(object sender, EventArgs e)
+        {
+            if (caution.Text.Length == 0)
+            {
+                complete[8] = false;
+                caution_invalid.Visible = false;
+            }
+            else
+            {
+                complete[8] = CommonMethods.valueBetween(caution.Text, 0, 1000);
+                caution_invalid.Visible = !complete[8];
+            }
+
+            ButtonReset();
+        }
+
         private void sessionDone_Click(object sender, EventArgs e)
         {
             if(Int32.Parse(lateFees.Text)< Int32.Parse(warnFees.Text))
@@ -220,8 +236,8 @@ namespace JEMS_Fees_Management_System
                 return;
             }
 
-            String adrs, pvrs, afrs, anrs, mtrs, otrs;
-            adrs = pvrs = afrs = anrs = mtrs = otrs = "";
+            String adrs, pvrs, afrs, anrs, mtrs, otrs, stid, prid;
+            adrs = pvrs = afrs = anrs = mtrs = otrs = stid = prid = "";
             bool sessionExists = false;
             using(SqlConnection connection = new SqlConnection(GlobalVariables.dbConnectString))
             {
@@ -241,6 +257,9 @@ namespace JEMS_Fees_Management_System
                             anrs = dr[Table.session_info.annual_rec_start].ToString();
                             mtrs = dr[Table.session_info.monthly_rec_start].ToString();
                             otrs = dr[Table.session_info.other_rec_start].ToString();
+                            stid = dr[Table.session_info.st_id_start].ToString();
+                            prid = dr[Table.session_info.prov_id_start].ToString();
+
                         }
                         dr.Close();
                     }
@@ -262,7 +281,9 @@ namespace JEMS_Fees_Management_System
                 afrs = Receipt.adForm + ssn + "0001";
                 anrs = Receipt.annual + ssn + "0001";
                 mtrs = Receipt.monthly + ssn + "0001";
-                otrs = Receipt.other + ssn + "0001"; 
+                otrs = Receipt.other + ssn + "0001";
+                stid = "ST" + ssn + "0001";
+                prid = "PV" + ssn + "0001";
             }
             else
             {
@@ -299,6 +320,8 @@ namespace JEMS_Fees_Management_System
             Table.session_info.annual_rec_start + ", " +
             Table.session_info.monthly_rec_start + ", " +
             Table.session_info.other_rec_start + ", " +
+            Table.session_info.st_id_start + ", " +
+            Table.session_info.prov_id_start + ", " +
             Table.session_info.belt_tie + ", " +
             Table.session_info.warn_fees_date + ", " +
             Table.session_info.default_warn_fees_date + ", " +
@@ -307,7 +330,8 @@ namespace JEMS_Fees_Management_System
             Table.session_info.dup_diary + ", " +
             Table.session_info.dup_rc + ", " +
             Table.session_info.dup_tc + ", " +
-            Table.session_info.ad_form + ") " + " values ( " +
+            Table.session_info.ad_form + ", " +
+            Table.session_info.caution + ") " + " values ( " +
             currentSession.Text + ", " +
             "'" + adrs + "', " +
             "'" + pvrs + "', " +
@@ -315,6 +339,8 @@ namespace JEMS_Fees_Management_System
             "'" + anrs + "', " +
             "'" + mtrs + "', " +
             "'" + otrs + "', " +
+            "'" + stid + "', " +
+            "'" + prid + "', " +
             beltTie.Text + ", " +
             warnDate.Value.ToString() + ", " +
             warnDate.Value.ToString() + ", " +
@@ -323,7 +349,8 @@ namespace JEMS_Fees_Management_System
             dupDiary.Text + ", " +
             dupRC.Text + ", " +
             dupTC.Text + ", " +
-            adFFees.Text + ")";
+            adFFees.Text + ", " +
+            caution.Text + ")";
 
             using (SqlConnection connection = new SqlConnection(GlobalVariables.dbConnectString))
             {
@@ -353,5 +380,6 @@ namespace JEMS_Fees_Management_System
             Close();
 
         }
+        
     }
 }

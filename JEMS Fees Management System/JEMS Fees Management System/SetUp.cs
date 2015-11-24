@@ -120,7 +120,7 @@ namespace JEMS_Fees_Management_System
 
         void setTerminalFields()
         {
-            String query = "select * from terminal_names;";
+            String query = "select * from " + Table.terminal_names.tableName + ";";
             SqlDataReader dr;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
@@ -359,13 +359,13 @@ namespace JEMS_Fees_Management_System
                 try 
                 {
                     connection.Open();
-                    SqlCommand dumpTable = new SqlCommand("truncate table terminal_names", connection);
+                    SqlCommand dumpTable = new SqlCommand("truncate table " + Table.terminal_names.tableName, connection);
                     dumpTable.ExecuteNonQuery();
                     for(int i=0;i<=9;i++)
                     {
                         if (terminals[i] != null && terminals[i].Length != 0)
                         {
-                            String addString = "insert into terminal_names (id,name)" +
+                            String addString = "insert into " + Table.terminal_names.tableName + " (id,name)" +
                                                    " values(" + (i + 1) + "," + "'" + terminals[i] + "')";
                             SqlCommand addTerminal = new SqlCommand(addString, connection);
                             addTerminal.ExecuteNonQuery();
