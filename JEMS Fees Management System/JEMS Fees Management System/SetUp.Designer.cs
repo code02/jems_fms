@@ -350,6 +350,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SetUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SetUp";
             this.dbConnectPanel.ResumeLayout(false);
             this.dbConnectPanel.PerformLayout();

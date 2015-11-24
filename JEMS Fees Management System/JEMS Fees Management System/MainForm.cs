@@ -38,6 +38,8 @@ namespace JEMS_Fees_Management_System
 
             //Check Session info
             checkSessionInfo();
+            if (GlobalVariables.currentSession > 2014 && GlobalVariables.currentSession < 2051)
+                this.Text += " [Session: " + GlobalVariables.currentSession + "-" + (GlobalVariables.currentSession + 1) + "]";
 
            
         }
@@ -209,7 +211,40 @@ namespace JEMS_Fees_Management_System
                     connection.Close();
                 }
             }
-            if (count == 1) return;
+            if (count == 1)
+            {
+                using (SqlConnection connection = new SqlConnection(GlobalVariables.dbConnectString))
+                {
+                    try
+                    {
+                        connection.Open();
+                        String query = "Select " + Table.session_info.session + " from " + Table.session_info.tableName;
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            SqlDataReader dr = command.ExecuteReader();
+                            if(dr.Read())
+                            {
+                                GlobalVariables.currentSession = Convert.ToInt32(dr[Table.session_info.session]);
+                                
+                            }
+                            dr.Close();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        DialogResult dr = MessageBox.Show("Some Error Occurred", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (dr == System.Windows.Forms.DialogResult.OK)
+                        {
+                            Close();
+                        }
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+                return;
+            }
             else
             {
                 SessionConfig sConfig = new SessionConfig();
@@ -306,6 +341,13 @@ namespace JEMS_Fees_Management_System
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             launchSetup(false);
+        }
+
+        private void sessionConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SessionConfig sConfig = new SessionConfig();
+            sConfig.cancellable = true;
+            sConfig.ShowDialog();
         }
     }
 }

@@ -18,15 +18,17 @@ namespace JEMS_Fees_Management_System
 {
     public partial class SetUp : Form
     {
-        Boolean terminal_complete = false;                           //All session Fields Complete
-        String[] terminals = new String[10] {"","","","","",
-                                             "","","","",""};
-
+        Boolean terminal_complete;                           //All session Fields Complete
+        String[] terminals;
 
         String connectionString; 
 
         public SetUp()
         {
+
+            terminal_complete = false;                           //All session Fields Complete
+            terminals = new String[10] {"","","","","",
+                                             "","","","",""};
             InitializeComponent();
             terminalDone.Enabled = terminal_complete;
             dbconnect_next.Enabled = false;

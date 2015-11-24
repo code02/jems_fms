@@ -13,16 +13,58 @@ namespace JEMS_Fees_Management_System
 {
     public partial class SessionConfig : Form
     {
-        public bool cancellable = true;
-        public bool killParent = false;
-        public bool forceClose = false;
-        public bool done = false;
-        bool[] complete = new bool[9]{false,false,false,false,false,false,false,false,false};
+        public bool cancellable;
+        public bool killParent;
+        public bool forceClose;
+        public bool done;
+        bool[] complete;
 
         public SessionConfig()
         {
+            cancellable = true;
+            killParent = false;
+            forceClose = false;
+            done = false;
+            complete = new bool[8]{false,false,false,false,false,false,false,false};
+            
             InitializeComponent();
+
+            setUPPanel();
             ButtonReset();
+        }
+
+        private void setUPPanel()
+        {
+            String getQuery = "Select top 1 * from " + Table.session_info.tableName + " order by " +
+                        Table.session_info.session + " desc ";
+            using (SqlConnection connection = new SqlConnection(GlobalVariables.dbConnectString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(getQuery, connection))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+                        if (dr.Read())
+                        {
+                            currentSession.Text = "" + Convert.ToInt32(dr[Table.session_info.session]);
+                            warnFees.Text = "" + Convert.ToInt32(dr[Table.session_info.warn_fees]);
+                            warnDate.Value = Convert.ToInt32(dr[Table.session_info.warn_fees_date]);
+                            lateFees.Text = "" + Convert.ToInt32(dr[Table.session_info.late_fees]);
+                            adFFees.Text = "" + Convert.ToInt32(dr[Table.session_info.ad_form]);
+                            beltTie.Text = "" + Convert.ToInt32(dr[Table.session_info.belt_tie]);
+                            dupDiary.Text = "" + Convert.ToInt32(dr[Table.session_info.dup_diary]);
+                            dupRC.Text = "" + Convert.ToInt32(dr[Table.session_info.dup_rc]);
+                            dupTC.Text = "" + Convert.ToInt32(dr[Table.session_info.dup_tc]);
+                        }
+                        dr.Close();
+                    }
+                    connection.Close();
+                }
+                catch (Exception)
+                { }
+            }
+
         }
 
         private void formClosing(object sender, FormClosingEventArgs e)
@@ -55,7 +97,7 @@ namespace JEMS_Fees_Management_System
         void ButtonReset()
         { 
             bool check = true;
-            for (int i = 0; i < 9; i++) 
+            for (int i = 0; i < 8; i++) 
             {
                 check = check && complete[i];
                 //if (!complete[i]) check = false;
@@ -210,22 +252,6 @@ namespace JEMS_Fees_Management_System
             ButtonReset();
         }
 
-        private void caution_TextChanged(object sender, EventArgs e)
-        {
-            if (caution.Text.Length == 0)
-            {
-                complete[8] = false;
-                caution_invalid.Visible = false;
-            }
-            else
-            {
-                complete[8] = CommonMethods.valueBetween(caution.Text, 0, 1000);
-                caution_invalid.Visible = !complete[8];
-            }
-
-            ButtonReset();
-        }
-
         private void sessionDone_Click(object sender, EventArgs e)
         {
             if(Int32.Parse(lateFees.Text)< Int32.Parse(warnFees.Text))
@@ -292,7 +318,7 @@ namespace JEMS_Fees_Management_System
                     try
                     {
                         connection.Open();
-                        String dumpQuery = "truncate table session_info ";
+                        String dumpQuery = "truncate table " + Table.session_info.tableName;
                         using(SqlCommand dumpCommand = new SqlCommand(dumpQuery,connection))
                         {
                             dumpCommand.ExecuteNonQuery();
@@ -330,8 +356,7 @@ namespace JEMS_Fees_Management_System
             Table.session_info.dup_diary + ", " +
             Table.session_info.dup_rc + ", " +
             Table.session_info.dup_tc + ", " +
-            Table.session_info.ad_form + ", " +
-            Table.session_info.caution + ") " + " values ( " +
+            Table.session_info.ad_form + ") " + " values ( " +
             currentSession.Text + ", " +
             "'" + adrs + "', " +
             "'" + pvrs + "', " +
@@ -349,8 +374,7 @@ namespace JEMS_Fees_Management_System
             dupDiary.Text + ", " +
             dupRC.Text + ", " +
             dupTC.Text + ", " +
-            adFFees.Text + ", " +
-            caution.Text + ")";
+            adFFees.Text + ")";
 
             using (SqlConnection connection = new SqlConnection(GlobalVariables.dbConnectString))
             {
@@ -377,8 +401,8 @@ namespace JEMS_Fees_Management_System
                 }
             }
             done = true;
+            GlobalVariables.currentSession = Int32.Parse(currentSession.Text);
             Close();
-
         }
         
     }

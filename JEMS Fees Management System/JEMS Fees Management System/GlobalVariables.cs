@@ -9,7 +9,7 @@ namespace JEMS_Fees_Management_System
     public static class GlobalVariables
     {
         public static String dbConnectString;
-    
+        public static int currentSession = 0;
     }
 
     public static class Classes
@@ -122,11 +122,24 @@ namespace JEMS_Fees_Management_System
             public static String st_id_start = "student_id_start";
             public static String prov_id_start = "prov_id_start";
         }
+
         public static class terminal_names
         { 
             public static String tableName = "terminal_names";
         }
 
+        public static class admission_base_struct
+        {
+            public static String tableName = "admission_base_struct";
+            public static String clss = "class";
+            public static String session = "session";
+            public static String ad_fees = "admission_fees";
+            public static String school_dev = "school_dev";
+            public static String furn_fund = "furniture_fund";
+            public static String lab_dev = "lab_dev";
+            public static String caution = "caution";
+            public static String belt_tie = "belt_tie";
+        }
     }
 
     class CommonMethods

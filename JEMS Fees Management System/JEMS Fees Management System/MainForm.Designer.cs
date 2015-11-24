@@ -171,7 +171,7 @@
             // editDetailsToolStripMenuItem
             // 
             this.editDetailsToolStripMenuItem.Name = "editDetailsToolStripMenuItem";
-            this.editDetailsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editDetailsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.editDetailsToolStripMenuItem.Text = "Edit Details";
             // 
             // feeStructureToolStripMenuItem
@@ -180,7 +180,7 @@
             this.annualFeeStructureToolStripMenuItem,
             this.monthlyFeeStructureToolStripMenuItem});
             this.feeStructureToolStripMenuItem.Name = "feeStructureToolStripMenuItem";
-            this.feeStructureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.feeStructureToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.feeStructureToolStripMenuItem.Text = "Fee Structure";
             // 
             // annualFeeStructureToolStripMenuItem
@@ -223,6 +223,7 @@
             this.sessionConfigurationToolStripMenuItem.Name = "sessionConfigurationToolStripMenuItem";
             this.sessionConfigurationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.sessionConfigurationToolStripMenuItem.Text = "Session Configuration";
+            this.sessionConfigurationToolStripMenuItem.Click += new System.EventHandler(this.sessionConfigurationToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
