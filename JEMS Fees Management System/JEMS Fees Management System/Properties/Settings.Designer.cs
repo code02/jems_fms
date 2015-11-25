@@ -22,5 +22,14 @@ namespace JEMS_Fees_Management_System.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("950, 200")]
+        public global::System.Drawing.Size monthlyTableResize {
+            get {
+                return ((global::System.Drawing.Size)(this["monthlyTableResize"]));
+            }
+        }
     }
 }

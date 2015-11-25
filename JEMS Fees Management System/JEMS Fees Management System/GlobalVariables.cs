@@ -140,6 +140,16 @@ namespace JEMS_Fees_Management_System
             public static String caution = "caution";
             public static String belt_tie = "belt_tie";
         }
+
+        public static class annual_base_struct
+        {
+            public static String tableName = "annual_base_struct";
+            public static String session = "session";
+            public static String clss = "class";
+            public static String school_dev = "school_dev";
+            public static String lab_dev = "lab_dev";
+            public static String caution = "caution";
+        }
     }
 
     class CommonMethods
